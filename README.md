@@ -2,13 +2,13 @@
 
 ![App Logo](www/assets/mipmap-hdpi/ic_launcher.png?raw=true)
 
-Pi-hole Droid is an *unofficial* client that connects to your Pi-hole to show charts and statistics.
+Pi-hole Droid is an *unofficial* client that connects to your [Pi-hole](https://github.com/pi-hole/pi-hole) to show charts and statistics.
 
 This is the repository of the Pi-hole Droid's opensource application available on Google Playstore.
 
-** What is Pi-hole? **
+**What is Pi-hole?**
 
-> [Pi-hole](https://github.com/pi-hole/pi-hole) is the multi-platform, network-wide ad blocker which blocks ads for all your devices without the need to install client-side software.
+> Pi-hole is the multi-platform, network-wide ad blocker which blocks ads for all your devices without the need to install client-side software.
 
 Pi-hole Droid makes use of [Pi-hole API](https://github.com/pi-hole/AdminLTE) to obtain all the data. The credentials is **locally stored** on your device through localStorage.
 
