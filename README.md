@@ -36,11 +36,11 @@ I'm working on these tasks for the next releases:
 * Auto update toggle on Query Log's page
 * Dark theme
 
-Do you have a feature request? Please, [write an issue](https://github.com/friimaind/pihole-droid/issues).
+Do you have a feature request? Please, [write an issue](https://github.com/friimaind/pi-hole-droid/issues).
 
 ## Oh no! I found a bug!
 
-Please, [write an issue](https://github.com/friimaind/pihole-droid/issues).
+Please, [write an issue](https://github.com/friimaind/pi-hole-droid/issues).
 
 ## Authors
 
