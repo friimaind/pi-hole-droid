@@ -4,7 +4,7 @@
 
 Pi-hole Droid is an *unofficial* client that connects to your [Pi-hole](https://github.com/pi-hole/pi-hole) to show charts and statistics.
 
-This is the repository of the Pi-hole Droid's opensource application available on [Google Playstore](https://play.google.com/store/apps/details?id=friimaind.piholedroid).
+This is the repository of the Pi-hole Droid's opensource application available on [Google Play Store](https://play.google.com/store/apps/details?id=friimaind.piholedroid).
 
 **What is Pi-hole?**
 
