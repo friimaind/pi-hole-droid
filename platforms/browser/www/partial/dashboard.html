@@ -1,0 +1,171 @@
+<div id="ads_blocked_today" class="pihole-card mdl-card mdl-shadow--2dp bg-aqua">
+    <div class="mdl-card__title mdl-card--expand">
+        <h2><i class="material-icons loading">refresh</i></h2>
+    </div>    
+    <div class="mdl-card__actions mdl-card--border">
+        DNS Queries Blocked Today
+
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">today</i>
+    </div>
+</div>
+
+<div id="dns_queries_today" class="pihole-card mdl-card mdl-shadow--2dp bg-green">
+    <div class="mdl-card__title mdl-card--expand">
+        <h2><i class="material-icons loading">refresh</i></h2>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        DNS Queries Today
+
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">public</i>
+    </div>
+</div>
+
+<div id="ads_percentage_today" class="pihole-card mdl-card mdl-shadow--2dp bg-yellow">
+    <div class="mdl-card__title mdl-card--expand">
+        <h2><i class="material-icons loading">refresh</i></h2>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        Of Today's Queries Were Blocked
+
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">block</i>
+    </div>
+</div>
+
+<div id="domains_being_blocked" class="pihole-card mdl-card mdl-shadow--2dp bg-red">
+    <div class="mdl-card__title mdl-card--expand">
+        <h2><i class="material-icons loading">refresh</i></h2>
+    </div>
+    <div class="mdl-card__actions mdl-card--border">
+        Domains Being Blocked
+
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">view list</i>
+    </div>
+</div>
+
+<div class="pihole-card mdl-card mdl-shadow--2dp bg-white">
+    <div class="mdl-card__actions mdl-card--border">
+        Query types
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">dns</i>
+    </div>
+    <div class="mdl-card__title mdl-card--expand">        
+        <div class="ct-chart ct-chart-query-types"><i class="material-icons loading">refresh</i></div>
+    </div>    
+</div>
+
+<div class="pihole-card mdl-card mdl-shadow--2dp bg-white">
+    <div class="mdl-card__actions mdl-card--border">
+        Forward destinations
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">forward</i>
+    </div>
+    <div class="mdl-card__title mdl-card--expand">
+        <div class="ct-chart ct-chart-forward-destinations"><i class="material-icons loading">refresh</i></div>
+    </div>    
+</div>
+
+<div class="pihole-card mdl-card mdl-shadow--2dp bg-white">
+    <div class="mdl-card__actions mdl-card--border">
+        Top domains
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">dns</i>
+    </div>
+    <div class="mdl-card--expand">
+        <p class="please-rotate mdl-typography--text-center">
+            <span class="mdl-chip mdl-chip--contact">
+                <span class="mdl-chip__contact mdl-color--indigo mdl-color-text--white material-icons">rotate_left</span>
+                <span class="mdl-chip__text">Please rotate your device</span>
+            </span>
+        </p>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth force-landscape">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric fullwidth">Domain</th>
+                    <th class="fullwidth">Hit</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-table-top-queries"></tbody>
+        </table>
+    </div>    
+</div>
+
+<div class="pihole-card mdl-card mdl-shadow--2dp bg-white">
+    <div class="mdl-card__actions mdl-card--border">
+        Top advertisers
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">dns</i>
+    </div>
+    <div class="mdl-card--expand">
+        <p class="please-rotate mdl-typography--text-center">
+            <span class="mdl-chip mdl-chip--contact">
+                <span class="mdl-chip__contact mdl-color--indigo mdl-color-text--white material-icons">rotate_left</span>
+                <span class="mdl-chip__text">Please rotate your device</span>
+            </span>
+        </p>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth force-landscape">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric fullwidth">Domain</th>
+                    <th class="fullwidth">Hit</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-table-top-ads"></tbody>
+        </table>
+    </div>    
+</div>
+
+<div class="pihole-card mdl-card mdl-shadow--2dp bg-white">
+    <div class="mdl-card__actions mdl-card--border">
+        Top clients
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">dns</i>
+    </div>
+    <div class="mdl-card--expand">
+        <p class="please-rotate mdl-typography--text-center">
+            <span class="mdl-chip mdl-chip--contact">
+                <span class="mdl-chip__contact mdl-color--indigo mdl-color-text--white material-icons">rotate_left</span>
+                <span class="mdl-chip__text">Please rotate your device</span>
+            </span>
+        </p>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth force-landscape">
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric fullwidth">Client</th>
+                    <th class="fullwidth">Hit</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-table-top-clients"></tbody>
+            </tbody>
+        </table>
+    </div>    
+</div>
+
+<div class="pihole-card mdl-card mdl-shadow--2dp bg-white">
+    <div class="mdl-card__actions mdl-card--border">
+        Recent items
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">dns</i>
+    </div>
+    <div class="mdl-card--expand">
+        <p class="please-rotate mdl-typography--text-center">
+            <span class="mdl-chip mdl-chip--contact">
+                <span class="mdl-chip__contact mdl-color--indigo mdl-color-text--white material-icons">rotate_left</span>
+                <span class="mdl-chip__text">Please rotate your device</span>
+            </span>
+        </p>
+        <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth force-landscape">            
+            <thead>
+                <tr>
+                    <th class="mdl-data-table__cell--non-numeric fullwidth">Time</th>
+                    <th>Domain</th>
+                    <th>IP</th>
+                </tr>
+            </thead>
+            <tbody id="tbody-table-recent-items"></tbody>            
+        </table>
+    </div>    
+</div>

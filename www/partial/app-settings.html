@@ -1,0 +1,37 @@
+<div class="mdl-cell mdl-cell--12-col mdl-card mdl-shadow--4dp">
+    <div class="mdl-card__title">
+        <h2 class="mdl-card__title-text">Settings</h2>
+        <div class="mdl-layout-spacer"></div>
+        <i class="material-icons">vpn_key</i>
+    </div>
+
+    <div class="mdl-card__supporting-text">
+        <p>Please insert here your Pi-hole settings.</p>
+        <p>Need help? <a href="#/" id="go_to_help">Go to the Help page</a></p>
+        <form id="form_settings" class="fullwidth" method="POST">
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="url" id="pihole_host">
+                <label class="mdl-textfield__label" for="pihole_host">Pi-hole's IP or hostname</label>                
+            </div>
+            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                <input class="mdl-textfield__input" type="text" id="pihole_token">
+                <label class="mdl-textfield__label" for="pihole_token">Pi-hole's token string</label>
+            </div>            
+
+            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">                                
+                Save                
+            </button>
+        </form>
+    </div>
+
+    <dialog class="mdl-dialog">
+        <h4 class="mdl-dialog__title"><i class="material-icons mdl-color-text--red">warning</i> Uhm...</h4>
+        <div class="mdl-dialog__content">
+            <p>I'm sorry but I <strong>cannot connect</strong> to your Pi-hole.</p>
+            <p>Please insert a valid url (http://IP_OR_HOSTNAME) and the correct token.</p>
+        </div>
+        <div class="mdl-dialog__actions">
+            <button type="button" class="mdl-button close">OK</button>
+        </div>
+    </dialog>
+</div>
