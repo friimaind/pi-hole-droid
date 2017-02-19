@@ -1,4 +1,7 @@
 # Pi-hole Droid
+
+![App Logo](www/assets/mipmap-hdpi/ic_launcher.png?raw=true)
+
 Pi-hole Droid is an *unofficial* app that connects to your Pi-hole to show charts and statistics.
 
 This is the repository of the [Pi-hole Droid's opensource application](https://play.google.com/store).
