@@ -14,7 +14,7 @@ Pi-hole Droid makes use of [Pi-hole API](https://github.com/pi-hole/AdminLTE) to
 
 ## Download
 
-[<a href="https://play.google.com/store/apps/details?id=friimaind.piholedroid"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
+<a href="https://play.google.com/store/apps/details?id=friimaind.piholedroid"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
 
 ## Screenshots
 ![Homepage](screenshots/home.png?raw=true "Homepage") 
