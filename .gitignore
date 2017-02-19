@@ -15,5 +15,8 @@ platforms/ios/www
 platforms/ios/MyPace/config.xml
 platforms/ios/.staging
 
+# Browser
+platforms/browser/build/
+
 # Emulator logs
 platforms/ios/cordova/console.log
