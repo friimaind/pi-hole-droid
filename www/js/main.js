@@ -251,14 +251,14 @@ function pageDashboard() {
                         $('#tbody-table-top-queries').parents('div.pihole-card').hide();
                     }
                 } else if (key == 'top_ads') {
-                    
+
                     // remove loading row and replace it with results
                     $('#tbody-table-top-ads > tr:first-child').fadeOut(400, function () {
                         $.each(val, function (domain, domain_hits) {
                             $('#tbody-table-top-ads:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + domain + '</td><td>' + domain_hits + '</td></tr>');
                         });
                     });
-                    
+
                 }
             });
         });
@@ -281,13 +281,17 @@ function pageDashboard() {
 
 
         /* recent items */
-        // TODO: add loading to tbody
         $.getJSON(pihole_host + "/admin/api.php?recentItems=10&auth=" + pihole_token, function (response_data) {
             $.each(response_data, function (key, val) {
                 if (key == 'recent_queries') {
-                    $.each(val, function (key_query, val_query) {
-                        $('#tbody-table-recent-items:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + val_query.time + '</td><td>' + val_query.domain + '</td><td>' + val_query.ip + '</td></tr>');
+
+                    // remove loading row and replace it with results
+                    $('#tbody-table-recent-items > tr:first-child').fadeOut(400, function () {
+                        $.each(val, function (key_query, val_query) {
+                            $('#tbody-table-recent-items:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + val_query.time + '</td><td>' + val_query.domain + '</td><td>' + val_query.ip + '</td></tr>');
+                        });
                     });
+
                 }
             });
         });
