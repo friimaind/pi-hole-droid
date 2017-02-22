@@ -231,17 +231,6 @@ html, body {
 }
 /* /MDL CARD */
 
-@media all and (orientation:portrait) {
-    .force-landscape {
-        display: none;
-    }
-}
-@media all and (orientation:landscape) {
-    .please-rotate {
-        display: none;
-    }
-}
-
 /* DATATABLES */
 .dataTables_length,
 .dataTables_filter {

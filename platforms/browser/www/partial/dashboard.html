@@ -1,48 +1,50 @@
-<div id="ads_blocked_today" class="pihole-card mdl-card mdl-shadow--2dp bg-aqua">
-    <div class="mdl-card__title mdl-card--expand">
-        <h2><i class="material-icons loading">refresh</i></h2>
-    </div>    
-    <div class="mdl-card__actions mdl-card--border">
-        DNS Queries Blocked Today
+<div class="centered-element">
+    <div id="ads_blocked_today" class="pihole-card pihole-card-floating mdl-card mdl-shadow--2dp bg-aqua">
+        <div class="mdl-card__title mdl-card--expand">
+            <h2><i class="material-icons loading">refresh</i></h2>
+        </div>    
+        <div class="mdl-card__actions mdl-card--border">
+            DNS Queries Blocked Today
 
-        <div class="mdl-layout-spacer"></div>
-        <i class="material-icons">today</i>
+            <div class="mdl-layout-spacer"></div>
+            <i class="material-icons">today</i>
+        </div>
     </div>
-</div>
 
-<div id="dns_queries_today" class="pihole-card mdl-card mdl-shadow--2dp bg-green">
-    <div class="mdl-card__title mdl-card--expand">
-        <h2><i class="material-icons loading">refresh</i></h2>
+    <div id="dns_queries_today" class="pihole-card pihole-card-floating mdl-card mdl-shadow--2dp bg-green">
+        <div class="mdl-card__title mdl-card--expand">
+            <h2><i class="material-icons loading">refresh</i></h2>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            DNS Queries Today
+
+            <div class="mdl-layout-spacer"></div>
+            <i class="material-icons">public</i>
+        </div>
     </div>
-    <div class="mdl-card__actions mdl-card--border">
-        DNS Queries Today
 
-        <div class="mdl-layout-spacer"></div>
-        <i class="material-icons">public</i>
+    <div id="ads_percentage_today" class="pihole-card pihole-card-floating mdl-card mdl-shadow--2dp bg-yellow">
+        <div class="mdl-card__title mdl-card--expand">
+            <h2><i class="material-icons loading">refresh</i></h2>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            Of Today's Queries Were Blocked
+
+            <div class="mdl-layout-spacer"></div>
+            <i class="material-icons">block</i>
+        </div>
     </div>
-</div>
 
-<div id="ads_percentage_today" class="pihole-card mdl-card mdl-shadow--2dp bg-yellow">
-    <div class="mdl-card__title mdl-card--expand">
-        <h2><i class="material-icons loading">refresh</i></h2>
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-        Of Today's Queries Were Blocked
+    <div id="domains_being_blocked" class="pihole-card pihole-card-floating mdl-card mdl-shadow--2dp bg-red">
+        <div class="mdl-card__title mdl-card--expand">
+            <h2><i class="material-icons loading">refresh</i></h2>
+        </div>
+        <div class="mdl-card__actions mdl-card--border">
+            Domains Being Blocked
 
-        <div class="mdl-layout-spacer"></div>
-        <i class="material-icons">block</i>
-    </div>
-</div>
-
-<div id="domains_being_blocked" class="pihole-card mdl-card mdl-shadow--2dp bg-red">
-    <div class="mdl-card__title mdl-card--expand">
-        <h2><i class="material-icons loading">refresh</i></h2>
-    </div>
-    <div class="mdl-card__actions mdl-card--border">
-        Domains Being Blocked
-
-        <div class="mdl-layout-spacer"></div>
-        <i class="material-icons">view list</i>
+            <div class="mdl-layout-spacer"></div>
+            <i class="material-icons">list</i>
+        </div>
     </div>
 </div>
 
@@ -74,7 +76,7 @@
         <div class="mdl-layout-spacer"></div>
         <i class="material-icons">dns</i>
     </div>
-    <div class="mdl-card--expand">
+    <div class="mdl-card--expand">        
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
             <thead>
                 <tr>
@@ -82,7 +84,15 @@
                     <th class="fullwidth">Hit</th>
                 </tr>
             </thead>
-            <tbody id="tbody-table-top-queries"></tbody>
+            <tbody id="tbody-table-top-queries">
+                <tr>
+                    <td colspan="2">
+                        <p class="mdl-typography--text-center">
+                            <i class="material-icons loading">refresh</i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>    
 </div>
@@ -101,7 +111,15 @@
                     <th class="fullwidth">Hit</th>
                 </tr>
             </thead>
-            <tbody id="tbody-table-top-ads"></tbody>
+            <tbody id="tbody-table-top-ads">
+                <tr>
+                    <td colspan="2">
+                        <p class="mdl-typography--text-center">
+                            <i class="material-icons loading">refresh</i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>    
 </div>
@@ -120,7 +138,15 @@
                     <th class="fullwidth">Hit</th>
                 </tr>
             </thead>
-            <tbody id="tbody-table-top-clients"></tbody>
+            <tbody id="tbody-table-top-clients">
+                <tr>
+                    <td colspan="2">
+                        <p class="mdl-typography--text-center">
+                            <i class="material-icons loading">refresh</i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
             </tbody>
         </table>
     </div>    
@@ -147,7 +173,15 @@
                     <th>IP</th>
                 </tr>
             </thead>
-            <tbody id="tbody-table-recent-items"></tbody>            
+            <tbody id="tbody-table-recent-items">
+                <tr>
+                    <td colspan="3">
+                        <p class="mdl-typography--text-center">
+                            <i class="material-icons loading">refresh</i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>            
         </table>
     </div>    
 </div>

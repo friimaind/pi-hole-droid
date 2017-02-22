@@ -54,7 +54,7 @@ function init() {
     hammertime_content.on('swiperight', function () {
         mdl_toggleDrawer();
     });
-    
+
     var hammertime_drawer = new Hammer(document.getElementById('drawer'));
     hammertime_drawer.on('swipeleft', function () {
         mdl_toggleDrawer();
@@ -234,34 +234,46 @@ function pageDashboard() {
 
 
         /* top domains + top advertisers */
-        // TODO: add loading to tbody
         $.getJSON(pihole_host + "/admin/api.php?topItems&auth=" + pihole_token, function (response_data) {
             $.each(response_data, function (key, val) {
                 if (key == 'top_queries') {
                     if (jQuery.isEmptyObject(val) == false) {
-                        $.each(val, function (domain, domain_hits) {
-                            $('#tbody-table-top-queries:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + domain + '</td><td>' + domain_hits + '</td></tr>');
+
+                        // remove loading row and replace it with results
+                        $('#tbody-table-top-queries > tr:first-child').fadeOut(400, function () {
+                            $.each(val, function (domain, domain_hits) {
+                                $('#tbody-table-top-queries:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + domain + '</td><td>' + domain_hits + '</td></tr>');
+                            });
                         });
+
                     } else {
                         // privacy mode enabled, hide the table
                         $('#tbody-table-top-queries').parents('div.pihole-card').hide();
                     }
                 } else if (key == 'top_ads') {
-                    $.each(val, function (domain, domain_hits) {
-                        $('#tbody-table-top-ads:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + domain + '</td><td>' + domain_hits + '</td></tr>');
+
+                    // remove loading row and replace it with results
+                    $('#tbody-table-top-ads > tr:first-child').fadeOut(400, function () {
+                        $.each(val, function (domain, domain_hits) {
+                            $('#tbody-table-top-ads:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + domain + '</td><td>' + domain_hits + '</td></tr>');
+                        });
                     });
+
                 }
             });
         });
 
 
         /* top clients */
-        // TODO: add loading to tbody
         $.getJSON(pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token, function (response_data) {
             $.each(response_data, function (key, val) {
                 if (key == 'top_sources') {
-                    $.each(val, function (client, client_hits) {
-                        $('#tbody-table-top-clients:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + client + '</td><td class="mdl-data-table__cell--non-numeric">' + client_hits + '</td></tr>');
+
+                    // remove loading row and replace it with results
+                    $('#tbody-table-top-clients > tr:first-child').fadeOut(400, function () {
+                        $.each(val, function (client, client_hits) {
+                            $('#tbody-table-top-clients:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + client + '</td><td class="mdl-data-table__cell--non-numeric">' + client_hits + '</td></tr>');
+                        });
                     });
                 }
             });
@@ -269,13 +281,17 @@ function pageDashboard() {
 
 
         /* recent items */
-        // TODO: add loading to tbody
         $.getJSON(pihole_host + "/admin/api.php?recentItems=10&auth=" + pihole_token, function (response_data) {
             $.each(response_data, function (key, val) {
                 if (key == 'recent_queries') {
-                    $.each(val, function (key_query, val_query) {
-                        $('#tbody-table-recent-items:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + val_query.time + '</td><td>' + val_query.domain + '</td><td>' + val_query.ip + '</td></tr>');
+
+                    // remove loading row and replace it with results
+                    $('#tbody-table-recent-items > tr:first-child').fadeOut(400, function () {
+                        $.each(val, function (key_query, val_query) {
+                            $('#tbody-table-recent-items:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + val_query.time + '</td><td>' + val_query.domain + '</td><td>' + val_query.ip + '</td></tr>');
+                        });
                     });
+
                 }
             });
         });
@@ -303,23 +319,23 @@ function pageQueryLog() {
         $.getJSON(pihole_host + "/admin/api.php?getAllQueries&auth=" + pihole_token, function (data) {
             $.each(data, function (key, val) {
                 $.each(val, function (query) {
-                    
+
                     // replace unnecessary long strings
                     var client = val[query][3];
                     var client_short = client.replace('(127.0.0.1)', '');
-                    
+
                     var datetime = val[query][0];
                     var datetime_short = datetime.replace('T', '<br />');
-                    
+
                     dataSet.push([datetime_short, val[query][1], val[query][2], client_short, val[query][4]]);
                 });
             });
 
             $('.mdl-chip.mdl-please-wait').hide();
 
-            $('#query-log-table').DataTable({                
+            $('#query-log-table').DataTable({
                 data: dataSet,
-                order: [[ 0, "desc" ]],
+                order: [[0, "desc"]],
                 columns: [
                     {title: "Time", class: "mdl-data-table__cell--non-numeric fullwidth"},
                     {title: "Type"},
