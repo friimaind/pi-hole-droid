@@ -1,0 +1,10 @@
+@media all and (max-width:500px) {
+    .force-landscape {
+        display: none;
+    }
+}
+@media all and (min-width:500px){
+    .please-rotate {
+        display: none;
+    }
+}
