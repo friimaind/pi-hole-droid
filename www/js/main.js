@@ -251,9 +251,14 @@ function pageDashboard() {
                         $('#tbody-table-top-queries').parents('div.pihole-card').hide();
                     }
                 } else if (key == 'top_ads') {
-                    $.each(val, function (domain, domain_hits) {
-                        $('#tbody-table-top-ads:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + domain + '</td><td>' + domain_hits + '</td></tr>');
+                    
+                    // remove loading row and replace it with results
+                    $('#tbody-table-top-ads > tr:first-child').fadeOut(400, function () {
+                        $.each(val, function (domain, domain_hits) {
+                            $('#tbody-table-top-ads:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + domain + '</td><td>' + domain_hits + '</td></tr>');
+                        });
                     });
+                    
                 }
             });
         });
