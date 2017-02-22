@@ -74,7 +74,7 @@
         <div class="mdl-layout-spacer"></div>
         <i class="material-icons">dns</i>
     </div>
-    <div class="mdl-card--expand">
+    <div class="mdl-card--expand">        
         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp fullwidth">
             <thead>
                 <tr>
@@ -82,7 +82,15 @@
                     <th class="fullwidth">Hit</th>
                 </tr>
             </thead>
-            <tbody id="tbody-table-top-queries"></tbody>
+            <tbody id="tbody-table-top-queries">
+                <tr>
+                    <td colspan="2">
+                        <p class="mdl-typography--text-center">
+                            <i class="material-icons loading">refresh</i>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>    
 </div>
