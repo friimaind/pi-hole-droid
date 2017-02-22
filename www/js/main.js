@@ -260,12 +260,15 @@ function pageDashboard() {
 
 
         /* top clients */
-        // TODO: add loading to tbody
         $.getJSON(pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token, function (response_data) {
             $.each(response_data, function (key, val) {
                 if (key == 'top_sources') {
-                    $.each(val, function (client, client_hits) {
-                        $('#tbody-table-top-clients:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + client + '</td><td class="mdl-data-table__cell--non-numeric">' + client_hits + '</td></tr>');
+
+                    // remove loading row and replace it with results
+                    $('#tbody-table-top-clients > tr:first-child').fadeOut(400, function () {
+                        $.each(val, function (client, client_hits) {
+                            $('#tbody-table-top-clients:last-child').append('<tr><td class="mdl-data-table__cell--non-numeric">' + client + '</td><td class="mdl-data-table__cell--non-numeric">' + client_hits + '</td></tr>');
+                        });
                     });
                 }
             });
