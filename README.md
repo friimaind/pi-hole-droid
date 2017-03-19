@@ -63,6 +63,10 @@ Please, [write an issue](https://github.com/friimaind/pi-hole-droid/issues).
 
 If you want to contribute to this project and make it better, your help is very welcome! :)
 
+## App permissions
+
+The app could scan the QR Code of your Pi-hole to retrieve the token. This function uses the camera of your smartphone so this is the reason why the app needs the **camera permission**.
+
 ## License
 
 This project is licensed under the terms of the [GNU General Public License v2.0](LICENSE).
