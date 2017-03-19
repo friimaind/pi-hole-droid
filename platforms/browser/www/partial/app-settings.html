@@ -7,6 +7,7 @@
 
     <div class="mdl-card__supporting-text">
         <p>Please insert here your Pi-hole settings.</p>
+        <p>To obtain the token you can <strong>scan your Pi-hole's QR code</strong> from the admin web page. Click on the icon near the token field.</p>
         <p>Need help? <a href="#/" id="go_to_help">Go to the Help page</a></p>
         <form id="form_settings" class="fullwidth" method="POST">
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
@@ -16,8 +17,9 @@
             <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                 <input class="mdl-textfield__input" type="text" id="pihole_token">
                 <label class="mdl-textfield__label" for="pihole_token">Pi-hole's token string</label>
-            </div>            
-
+                <img id="qrcode_scan" src="img/qrcode-scan.svg" />
+            </div>
+            
             <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">                                
                 Save                
             </button>

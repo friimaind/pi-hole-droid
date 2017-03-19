@@ -95,6 +95,34 @@ function pageAppSettings() {
 
         updateFloatLabel();
 
+        document.addEventListener("deviceready", function () {
+            function scanQRCode() {
+                cordova.plugins.barcodeScanner.scan(
+                        function (result) {
+                            if (result.text) {
+                                $('#pihole_token').val(result.text);
+                                updateFloatLabel();
+                            }
+                        },
+                        function (error) {
+                            alert("Scanning failed: " + error);
+                        },
+                        {
+                            preferFrontCamera: false,
+                            showFlipCameraButton: true,
+                            showTorchButton: true,
+                            torchOn: false,
+                            prompt: "Place Pi-hole QR Code inside the scan area",
+                            resultDisplayDuration: 0,
+                            formats: "QR_CODE,PDF_417",
+                            orientation: "portrait"
+                        }
+                );
+            }
+
+            $('#qrcode_scan').click(scanQRCode);
+        });
+
         $('#form_settings').submit(function (event) {
             event.preventDefault();
 

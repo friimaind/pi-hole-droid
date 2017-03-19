@@ -13,7 +13,15 @@
         <p>If you get here you need help to find the credential for your Pi-hole. It's very easy!</p>
         <p>On the App setting page you need to insert the <strong>IP of your Pi-hole</strong> (for example http://192.168.1.2) or the <strong>hostname</strong> (for example http://mypyhole.local). Note that you can also specify a <strong>custom port</strong> with this format http://192.168.1.2:99 and obviously you can use <strong>https</strong>.</p>
         <p>The <strong>token string</strong> is required for access the Pi-hole's API and extract charts, table etc.<br />These credentials are <strong>saved locally</strong> on your smartphone.</p>
-        <p>The token string is inside your Raspberry, I suggest you to use a PC and paste it inside Google Keep or any other shared app with your smartphone.</p>
+        <p>To obtain the token string you can access to the admin web page of your Pi-hole and <strong>scan the QR code</strong> with your smartphone:</p>
+        <ul>
+            <li>Connect to your Pi-hole with a computer: http://RASPBERRY_IP/admin</li>
+            <li>Login and go to Settings</li>
+            <li>On the API tab click on "Show API token". It will open a new page with the QR code</li>
+            <li>On your smartphone click on the QR code scan icon near the token field</li>
+        </ul>
+        <p><em>Please note:</em> "Show API token" function is present on Pi-hole >= 2.5 Web Interface Version.</p>
+        <p>You can even obtain the token string with a manual operation: the token string is inside your Raspberry, I suggest you to use a PC and paste it inside Google Keep or any other shared app with your smartphone.</p>
         <ul>
             <li>Connect to your Pi-hole with SSH.<br /><pre class="language-markup"><code>ssh pi@RASPBERRY_IP</code></pre></li>
             <li>Look at the configuration file<br /><pre class="language-markup"><code>less /etc/pihole/setupVars.conf</code></pre></li>

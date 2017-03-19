@@ -12,6 +12,9 @@
         },
         "cordova-plugin-splashscreen": {
             "PACKAGE_NAME": "friimaind.piholedroid"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "PACKAGE_NAME": "friimaind.piholedroid"
         }
     },
     "dependent_plugins": {}
