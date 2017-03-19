@@ -39,6 +39,7 @@ Pi-hole Droid makes use of [Pi-hole API](https://github.com/pi-hole/AdminLTE) to
 * [Chartist JS](https://gionkunz.github.io/chartist-js)
 * [DataTables](https://datatables.net)
 * [Hammer.js](http://hammerjs.github.io)
+* [BarcodeScanner](https://github.com/phonegap/phonegap-plugin-barcodescanner)
 
 ## Upcoming releases
 I'm working on these tasks for the next releases:
