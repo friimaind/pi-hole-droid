@@ -60,6 +60,25 @@ function init() {
         mdl_toggleDrawer();
     });
 
+    // Bind toggle pihole on/off
+    $('#toggle_pihole_switch').change(function () {
+        var is_checked = $(this).prop('checked');
+
+        if (is_checked) {
+            var api_action = 'enable';
+        } else {
+            var api_action = 'disable';
+        }
+
+        /* summary */
+        var pihole_host = getPiholeHost();
+        var pihole_token = getPiholeToken();
+
+        $.getJSON(pihole_host + "/admin/api.php?" + api_action + "&auth=" + pihole_token, function (response_data) {
+            console.log(response_data);
+        });
+    });
+
     // Start
     if (getPiholeHost() && getPiholeToken()) {
         userIsLoggedIn();

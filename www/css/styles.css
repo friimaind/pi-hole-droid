@@ -99,6 +99,18 @@ html, body {
     width: 38px;
     height: 38px;
 }
+
+#toggle_pihole .mdl-switch.is-checked .mdl-switch__track{
+    background:rgba(0,0,0,.26);
+}
+
+#toggle_pihole .mdl-switch .mdl-switch__thumb{
+    background-color: #dd4b39;
+}
+
+#toggle_pihole .mdl-switch.is-checked .mdl-switch__thumb{
+    background-color: #00a65a;
+}
 /* /HEADER */
 
 /* CHARTS */
