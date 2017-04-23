@@ -1,5 +1,5 @@
 // Platform: android
-// 53ea1913735222d326e65326e03391405df3cd4e
+// 7c5fcc5a5adfbf3fb8ceaf36fbdd4bd970bd9c20
 /*
  Licensed to the Apache Software Foundation (ASF) under one
  or more contributor license agreements.  See the NOTICE file
@@ -19,7 +19,7 @@
  under the License.
 */
 ;(function() {
-var PLATFORM_VERSION_BUILD_LABEL = '6.0.0';
+var PLATFORM_VERSION_BUILD_LABEL = '6.2.1';
 // file: src/scripts/require.js
 
 /*jshint -W079 */
@@ -330,7 +330,7 @@ module.exports = cordova;
 
 });
 
-// file: /Users/jbowser/cordova/cordova-android/cordova-js-src/android/nativeapiprovider.js
+// file: /Users/steveng/repo/cordova/cordova-android/cordova-js-src/android/nativeapiprovider.js
 define("cordova/android/nativeapiprovider", function(require, exports, module) {
 
 /**
@@ -353,7 +353,7 @@ module.exports = {
 
 });
 
-// file: /Users/jbowser/cordova/cordova-android/cordova-js-src/android/promptbasednativeapi.js
+// file: /Users/steveng/repo/cordova/cordova-android/cordova-js-src/android/promptbasednativeapi.js
 define("cordova/android/promptbasednativeapi", function(require, exports, module) {
 
 /**
@@ -886,7 +886,7 @@ module.exports = channel;
 
 });
 
-// file: /Users/jbowser/cordova/cordova-android/cordova-js-src/exec.js
+// file: /Users/steveng/repo/cordova/cordova-android/cordova-js-src/exec.js
 define("cordova/exec", function(require, exports, module) {
 
 /**
@@ -1649,7 +1649,7 @@ exports.reset();
 
 });
 
-// file: /Users/jbowser/cordova/cordova-android/cordova-js-src/platform.js
+// file: /Users/steveng/repo/cordova/cordova-android/cordova-js-src/platform.js
 define("cordova/platform", function(require, exports, module) {
 
 // The last resume event that was received that had the result of a plugin call.
@@ -1759,7 +1759,7 @@ function onMessageFromNative(msg) {
 
 });
 
-// file: /Users/jbowser/cordova/cordova-android/cordova-js-src/plugin/android/app.js
+// file: /Users/steveng/repo/cordova/cordova-android/cordova-js-src/plugin/android/app.js
 define("cordova/plugin/android/app", function(require, exports, module) {
 
 var exec = require('cordova/exec');

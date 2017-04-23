@@ -7,10 +7,10 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "io.cordova.hellocordova"
-        },
         "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "friimaind.piholedroid"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "friimaind.piholedroid"
         },
         "phonegap-plugin-barcodescanner": {
