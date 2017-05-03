@@ -236,8 +236,6 @@ function pageDashboard() {
             var series_array = [];
             var colors_array = ["ct-fill-red", "ct-fill-blue", "ct-fill-light-blue", "ct-fill-orange", "ct-fill-green"];
 
-            console.log(response_data);
-
             $.each(response_data.forward_destinations, function (key, val) {
 
                 // split key for labels
