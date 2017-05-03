@@ -142,7 +142,7 @@ function pageAppSettings() {
             _localStorage('remove', 'pihole_success');
 
             $.ajax({
-                type: "POST",
+                type: "GET",
                 url: pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token,
                 success: function (data) {
                     $.getJSON(pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token, function (response) {

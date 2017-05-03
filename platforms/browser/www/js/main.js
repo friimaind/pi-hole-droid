@@ -141,11 +141,25 @@ function pageAppSettings() {
             _localStorage('save', 'pihole_token', pihole_token);
             _localStorage('remove', 'pihole_success');
 
-            $.ajax({
+            $.getJSON(pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token, function (response_data) {
+                if (jQuery.isEmptyObject(response_data)) {
+                    showErrorSettings();
+                } else {
+                    userIsLoggedIn();
+                    pageDashboard();
+                    _localStorage('save', 'pihole_success', 1);
+                }
+            });
+
+            /*$.ajax({
                 type: "POST",
                 url: pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token,
                 success: function (data) {
                     $.getJSON(pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token, function (response) {
+
+                        alert(response);
+                        alert(jQuery.isEmptyObject(response));
+
                         if (jQuery.isEmptyObject(response)) {
                             showErrorSettings();
                         } else {
@@ -155,10 +169,11 @@ function pageAppSettings() {
                         }
                     });
                 },
-                error: function () {
+                error: function (xhr, status, error) {
+                    alert(xhr.responseText);
                     showErrorSettings();
                 }
-            });
+            });*/
 
         });
 
@@ -315,6 +330,7 @@ function pageDashboard() {
 
 
         /* recent items */
+        // TODO: forced PHP api version, can't find an alternative on FTL's API
         $.getJSON(pihole_host + "/admin/api.php?recentItems=10&PHP&auth=" + pihole_token, function (response_data) {
             $.each(response_data, function (key, val) {
                 if (key == 'recent_queries') {
