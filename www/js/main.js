@@ -315,7 +315,8 @@ function pageDashboard() {
 
 
         /* recent items */
-        $.getJSON(pihole_host + "/admin/api.php?recentItems=10&auth=" + pihole_token, function (response_data) {
+        // TODO: forced PHP api version, can't find an alternative on FTL's API
+        $.getJSON(pihole_host + "/admin/api.php?recentItems=10&PHP&auth=" + pihole_token, function (response_data) {
             $.each(response_data, function (key, val) {
                 if (key == 'recent_queries') {
 
