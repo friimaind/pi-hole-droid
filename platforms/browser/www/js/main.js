@@ -206,13 +206,17 @@ function pageDashboard() {
 
         /* query types */
         $.getJSON(pihole_host + "/admin/api.php?getQueryTypes&auth=" + pihole_token, function (response_data) {
+            
+            console.log(response_data);
+            console.log(response_data.querytypes["A (IPv4)"]);
+            
             var data = {
-                labels: ['A', 'AAAA'],
+                labels: ['A (IPv4)', 'AAAA (IPv6)'],
                 series: [{
-                        value: response_data['query[A]'],
+                        value: response_data.querytypes['A (IPv4)'],
                         className: "ct-fill-red"
                     }, {
-                        value: response_data['query[AAAA]'],
+                        value: response_data.querytypes['AAAA (IPv6)'],
                         className: "ct-fill-blue"
                     }]
             };
@@ -220,7 +224,7 @@ function pageDashboard() {
             var options = {
                 height: 300,
                 chartPadding: 50,
-                labelOffset: 70
+                labelOffset: 85
             };
 
             $('.ct-chart-query-types .loading').fadeOut('normal', function () {
