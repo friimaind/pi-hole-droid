@@ -40,12 +40,29 @@ function init() {
         }
     });
 
-    // Bind logo click
-    $('.pihole_logo').click(function () {
-        if (getPiholeSuccess()) {
-            pageDashboard();
+    // Update current status of toggle button
+    _updateToggleButton();
+
+    // Bind logo click enable/disable
+    $('#label-pihole-toggle input').change(function (evt) {
+        if ($(this).is(':checked')) {
+            if (confirm("Do you want to ENABLE Pi-hole's ad blocking?")) {
+                $.getJSON(getPiholeHost() + "/admin/api.php?enable&auth=" + getPiholeToken(), function (response_data) {
+
+                });
+            } else {
+                $('#label-pihole-toggle')[0].MaterialSwitch.off();
+                evt.preventDefault();
+            }
         } else {
-            pageAppSettings();
+            if (confirm("Do you want to DISABLE Pi-hole's ad blocking?")) {
+                $.getJSON(getPiholeHost() + "/admin/api.php?disable&auth=" + getPiholeToken(), function (response_data) {
+
+                });
+            } else {
+                $('#label-pihole-toggle')[0].MaterialSwitch.on();
+                evt.preventDefault();
+            }
         }
     });
 
@@ -62,6 +79,7 @@ function init() {
 
     // Start
     if (getPiholeHost() && getPiholeToken()) {
+        _manageVisibilityToggle('show');
         userIsLoggedIn();
         pageDashboard();
     } else {
@@ -133,6 +151,7 @@ function pageAppSettings() {
             var pihole_token = $('#pihole_token').val();
 
             // check if pihole_host contains http or https, otherwise add http as default
+            // TODO: complete the check
             if (pihole_host.indexOf("http://") == 0 || pihole_host.indexOf("https://") == 0) {
 
             }
@@ -141,39 +160,25 @@ function pageAppSettings() {
             _localStorage('save', 'pihole_token', pihole_token);
             _localStorage('remove', 'pihole_success');
 
-            $.getJSON(pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token, function (response_data) {
-                if (jQuery.isEmptyObject(response_data)) {
-                    showErrorSettings();
-                } else {
-                    userIsLoggedIn();
-                    pageDashboard();
-                    _localStorage('save', 'pihole_success', 1);
-                }
-            });
-
-            /*$.ajax({
-                type: "POST",
+            $.ajax({
+                type: "GET",
                 url: pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token,
                 success: function (data) {
                     $.getJSON(pihole_host + "/admin/api.php?getQuerySources&auth=" + pihole_token, function (response) {
-
-                        alert(response);
-                        alert(jQuery.isEmptyObject(response));
-
                         if (jQuery.isEmptyObject(response)) {
                             showErrorSettings();
                         } else {
-                            userIsLoggedIn();
-                            pageDashboard();
                             _localStorage('save', 'pihole_success', 1);
+                            userIsLoggedIn();
+                            _updateToggleButton();
+                            pageDashboard();
                         }
                     });
                 },
-                error: function (xhr, status, error) {
-                    alert(xhr.responseText);
+                error: function () {
                     showErrorSettings();
                 }
-            });*/
+            });
 
         });
 
@@ -411,6 +416,35 @@ function pageAboutHelp() {
         $("#main_content").html(data);
         mdl_upgradeDom();
     });
+}
+
+/*************************************************************/
+
+
+/*************************************************************
+ * Helpers
+ *************************************************************/
+
+// Get Pi-hole current status
+function _updateToggleButton() {
+    var pihole_host = getPiholeHost();
+    var pihole_token = getPiholeToken();
+
+    if (pihole_host && pihole_token) {
+        $.getJSON(pihole_host + "/admin/api.php?status&auth=" + pihole_token, function (response_data) {
+            var current_status = response_data.status;
+
+            if (current_status) {
+                _manageVisibilityToggle('show');
+
+                if (current_status == 'disabled') {
+                    $('#label-pihole-toggle')[0].MaterialSwitch.off();
+                } else if (current_status == 'enabled') {
+                    $('#label-pihole-toggle')[0].MaterialSwitch.on();
+                }
+            }
+        });
+    }
 }
 
 /*************************************************************/

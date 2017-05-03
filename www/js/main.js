@@ -24,6 +24,7 @@ function init() {
         if ($(this).attr('href') == 'dashboard') {
             if (getPiholeSuccess()) {
                 pageDashboard();
+                _updateToggleButton();
             } else {
                 pageAppSettings();
             }
@@ -32,20 +33,39 @@ function init() {
         } else if ($(this).attr('href') == 'query_log') {
             if (getPiholeSuccess()) {
                 pageQueryLog();
+                _updateToggleButton();
             } else {
                 pageAppSettings();
             }
         } else if ($(this).attr('href') == 'about_help') {
             pageAboutHelp();
+            _updateToggleButton();
         }
     });
 
-    // Bind logo click
-    $('.pihole_logo').click(function () {
-        if (getPiholeSuccess()) {
-            pageDashboard();
+    // Update current status of toggle button
+    _updateToggleButton();
+
+    // Bind logo click enable/disable
+    $('#label-pihole-toggle input').change(function (evt) {
+        if ($(this).is(':checked')) {
+            if (confirm("Do you want to ENABLE Pi-hole's ad blocking?")) {
+                $.getJSON(getPiholeHost() + "/admin/api.php?enable&auth=" + getPiholeToken(), function (response_data) {
+
+                });
+            } else {
+                $('#label-pihole-toggle')[0].MaterialSwitch.off();
+                evt.preventDefault();
+            }
         } else {
-            pageAppSettings();
+            if (confirm("Do you want to DISABLE Pi-hole's ad blocking?")) {
+                $.getJSON(getPiholeHost() + "/admin/api.php?disable&auth=" + getPiholeToken(), function (response_data) {
+
+                });
+            } else {
+                $('#label-pihole-toggle')[0].MaterialSwitch.on();
+                evt.preventDefault();
+            }
         }
     });
 
@@ -62,6 +82,7 @@ function init() {
 
     // Start
     if (getPiholeHost() && getPiholeToken()) {
+        _manageVisibilityToggle('show');
         userIsLoggedIn();
         pageDashboard();
     } else {
@@ -150,9 +171,10 @@ function pageAppSettings() {
                         if (jQuery.isEmptyObject(response)) {
                             showErrorSettings();
                         } else {
-                            userIsLoggedIn();
-                            pageDashboard();
                             _localStorage('save', 'pihole_success', 1);
+                            userIsLoggedIn();
+                            _updateToggleButton();
+                            pageDashboard();
                         }
                     });
                 },
@@ -397,6 +419,35 @@ function pageAboutHelp() {
         $("#main_content").html(data);
         mdl_upgradeDom();
     });
+}
+
+/*************************************************************/
+
+
+/*************************************************************
+ * Helpers
+ *************************************************************/
+
+// Get Pi-hole current status
+function _updateToggleButton() {
+    var pihole_host = getPiholeHost();
+    var pihole_token = getPiholeToken();
+
+    if (pihole_host && pihole_token) {
+        $.getJSON(pihole_host + "/admin/api.php?status&auth=" + pihole_token, function (response_data) {
+            var current_status = response_data.status;
+
+            if (current_status) {
+                _manageVisibilityToggle('show');
+
+                if (current_status == 'disabled') {
+                    $('#label-pihole-toggle')[0].MaterialSwitch.off();
+                } else if (current_status == 'enabled') {
+                    $('#label-pihole-toggle')[0].MaterialSwitch.on();
+                }
+            }
+        });
+    }
 }
 
 /*************************************************************/

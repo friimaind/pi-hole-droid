@@ -95,10 +95,23 @@ html, body {
 /* /DRAWER */
 
 /* HEADER */
-.pihole-header .pihole_logo {
-    width: 38px;
-    height: 38px;
+
+.pihole-header #container-pihole-toggle {
+    padding-right: 10px;
 }
+
+.pihole-header .mdl-switch__thumb {
+    background:#dd4b39;
+}
+
+.pihole-header .mdl-switch.is-checked .mdl-switch__thumb {
+    background: #00a65a;
+}
+
+.pihole-header .mdl-switch.is-checked .mdl-switch__track {
+    background: rgba(0,0,0,.26);
+}
+
 /* /HEADER */
 
 /* CHARTS */

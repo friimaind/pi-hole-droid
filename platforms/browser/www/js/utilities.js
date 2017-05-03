@@ -109,3 +109,15 @@ function updateFloatLabel() {
 function updateAppTitle(title) {
     $('.mdl-layout-title').html(title);
 }
+
+/*
+ * Manage visibility of toggle button
+ */
+
+function _manageVisibilityToggle(action) {
+    if(action == 'show') {
+        $('#container-pihole-toggle').show();
+    } else if(action == 'hide') {
+        $('#container-pihole-toggle').hide();
+    }
+}
