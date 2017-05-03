@@ -11,6 +11,7 @@
         <link rel="stylesheet" href="lib/mdl/css/fonts.min.css">
         <link rel="stylesheet" href="lib/mdl/css/material.icons.min.css">
         <link rel="stylesheet" href="lib/mdl/css/material.indigo-red.min.css">
+        <link rel="stylesheet" href="lib/mdl/css/select.css">
         <link rel="stylesheet" href="lib/chartist/chartist.min.css">        
         <link rel="stylesheet" href="lib/DataTables/datatables.min.css"/>
         <link rel="stylesheet" href="css/styles.css">
@@ -55,6 +56,17 @@
                     <a class="mdl-navigation__link" href="query_log"><i class="material-icons" role="presentation">filter_list</i>Query log</a>
                     <a class="mdl-navigation__link" href="app_settings"><i class="material-icons" role="presentation">settings</i>App settings</a>
                     <a class="mdl-navigation__link" href="about_help"><i class="material-icons" role="presentation">help_outline</i>About & Help</a>
+
+                    <!-- profiles -->
+                    <div class="profile_container">
+                        <div class="mdl-selectfield">
+                            <label>Select Pi-hole's profile</label>
+                            <select class="browser-default">
+                                <option class="current_profile_name" value="" disabled selected>current_profile_name</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!-- /profiles -->
                 </nav>
             </div>
             <!-- /drawer -->
@@ -67,7 +79,7 @@
         <!-- scripts -->
         <script type="text/javascript" src="cordova.js"></script>   
         <script type="text/javascript" src="lib/jQuery/jquery-3.1.1.min.js"></script>
-        <script type="text/javascript" src="lib/mdl/js/material.min.js"></script>        
+        <script type="text/javascript" src="lib/mdl/js/material.min.js"></script>     
         <script type="text/javascript" src="lib/chartist/chartist.min.js"></script>
         <script type="text/javascript" src="lib/DataTables/datatables.min.js"></script>
         <script type="text/javascript" src="lib/hammerjs/hammer.min.js"></script>

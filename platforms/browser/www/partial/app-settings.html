@@ -2,38 +2,31 @@
     <div class="mdl-card__title">
         <h2 class="mdl-card__title-text">Settings</h2>
         <div class="mdl-layout-spacer"></div>
-        <i class="material-icons">vpn_key</i>
+        <i class="material-icons">settings</i>
     </div>
 
     <div class="mdl-card__supporting-text">
-        <p>Please insert here your Pi-hole settings.</p>
-        <p>To obtain the token you can <strong>scan your Pi-hole's QR code</strong> from the admin web page. Click on the icon near the token field.</p>
-        <p>Need help? <a href="#/" id="go_to_help">Go to the Help page</a></p>
-        <form id="form_settings" class="fullwidth" method="POST">
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="url" id="pihole_host">
-                <label class="mdl-textfield__label" for="pihole_host">Pi-hole's IP or hostname</label>                
-            </div>
-            <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="pihole_token">
-                <label class="mdl-textfield__label" for="pihole_token">Pi-hole's token string</label>
-                <img id="qrcode_scan" src="img/qrcode-scan.svg" />
-            </div>
-            
-            <button type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">                                
-                Save                
-            </button>
-        </form>
-    </div>
+        <p>Here you can manage all the <strong>profiles</strong> of the app.</p>
+        <p>You can have multiple profiles to manage different Pi-holes in different places (e.g. local Pi-holes or remotes Pi-holes).</p>
+        <p>For example: you can create a "local" profile (http://10.20.30.46) to manage your Pi-hole from home and another profile named "remote" (http://my-remote-host.ext) to manage your Pi-hole when you are not connected to your local network.</p>
+
+        <!-- dynamic profiles list -->
+        <div class="mdl-list" id="profiles_table"></div>
+
+        <button type="submit" id="add_new_profile" class="mdl-button mdl-js-button mdl-button--raised mdl-button--accent">                                
+            Add new profile                
+        </button>
+    </div>    
 
     <dialog class="mdl-dialog">
-        <h4 class="mdl-dialog__title"><i class="material-icons mdl-color-text--red">warning</i> Uhm...</h4>
+        <h4 class="mdl-dialog__title"><i class="material-icons mdl-color-text--red">warning</i> Are you sure?</h4>
         <div class="mdl-dialog__content">
-            <p>I'm sorry but I <strong>cannot connect</strong> to your Pi-hole.</p>
-            <p>Please insert a valid url (http://IP_OR_HOSTNAME) and the correct token.</p>
+            <p>Do you really want to delete this profile?</p>
+            <p>This action is <strong>irreversible</strong>.</p>
         </div>
         <div class="mdl-dialog__actions">
-            <button type="button" class="mdl-button close">OK</button>
+            <button type="button" class="mdl-button confirm">YES</button>
+            <button type="button" class="mdl-button close">Close</button>
         </div>
     </dialog>
 </div>

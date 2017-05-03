@@ -20,6 +20,10 @@ html, body {
 .mdl-data-table tbody tr:hover {
     background-color: transparent; 
 }
+
+a.mdl-list__item-secondary-action {
+    color:#000000;
+}
 /* /GENERAL */
 
 /* DRAWER */
@@ -91,6 +95,12 @@ html, body {
     width: 48px;
     height: 48px;
     padding-right: 10px;
+}
+
+.profile_container {
+    width: 100%;
+    bottom: 50px;
+    position: absolute;
 }
 /* /DRAWER */
 
@@ -258,13 +268,13 @@ table.dataTable.no-footer{
 }
 /* /DATATABLES */
 
-/* SETTINGS */
+/* PROFILE FORM & SETTINGS */
 .mdl-cell.mdl-card:first-child{
     margin-top:0;
 }
 
 #form_settings{
-    margin:30px 0 15px 0;
+    margin:10px 0 15px 0;
 }
 
 #form_settings .mdl-button {
@@ -285,7 +295,11 @@ table.dataTable.no-footer{
     padding-top:5px;
     opacity:.6;
 }
-/* /SETTINGS */
+
+#profiles_table i.material-icons{
+    padding: 0 10px;
+}
+/* /PROFILE FORM & SETTINGS*/
 
 /* ABOUT&HELP */
 h5 i.material-icons {

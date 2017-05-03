@@ -52,7 +52,7 @@ function userIsLoggedIn() {
         _localStorage('remove', 'pihole_host');
         _localStorage('remove', 'pihole_token');
         userIsGuest();
-        pageAppSettings();
+        pageAppProfilesSettings();
     });
 }
 
@@ -67,11 +67,34 @@ function userIsGuest() {
 }
 
 /*
+ * Get current settings object
+ */
+
+function getCurrentSettings() {
+    var settings = JSON.parse(_localStorage('get', 'settings'));
+    var active_profile = _localStorage('get', 'active_profile');
+
+    return settings[active_profile];
+}
+
+/*
+ * Get current profile name
+ */
+
+function getCurrentProfileName() {
+    var settings = getCurrentSettings();
+
+    return settings['profile_name'];
+}
+
+/*
  * Get Pihole Hostname
  */
 
 function getPiholeHost() {
-    return _localStorage('get', 'pihole_host');
+    var settings = getCurrentSettings();
+
+    return settings['pihole_host'];
 }
 
 /*
@@ -79,7 +102,9 @@ function getPiholeHost() {
  */
 
 function getPiholeToken() {
-    return _localStorage('get', 'pihole_token');
+    var settings = getCurrentSettings();
+
+    return settings['pihole_token'];
 }
 
 /*

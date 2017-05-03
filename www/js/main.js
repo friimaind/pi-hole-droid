@@ -25,15 +25,19 @@ function init() {
             if (getPiholeSuccess()) {
                 pageDashboard();
             } else {
-                pageAppSettings();
+                pageAppProfileForm();
             }
         } else if ($(this).attr('href') == 'app_settings') {
-            pageAppSettings();
+            if (getPiholeSuccess()) {
+                pageAppProfilesSettings();
+            } else {
+                pageAppProfileForm();
+            }
         } else if ($(this).attr('href') == 'query_log') {
             if (getPiholeSuccess()) {
                 pageQueryLog();
             } else {
-                pageAppSettings();
+                pageAppProfileForm();
             }
         } else if ($(this).attr('href') == 'about_help') {
             pageAboutHelp();
@@ -45,7 +49,7 @@ function init() {
         if (getPiholeSuccess()) {
             pageDashboard();
         } else {
-            pageAppSettings();
+            pageAppProfileForm();
         }
     });
 
@@ -61,22 +65,24 @@ function init() {
     });
 
     // Start
-    if (getPiholeHost() && getPiholeToken()) {
+    if (_localStorage('get', 'settings') && getPiholeHost() && getPiholeToken()) {
+        $('.current_profile_name').html(getCurrentProfileName());
         userIsLoggedIn();
         pageDashboard();
     } else {
-        pageAppSettings();
+        pageAppProfileForm();
     }
 
 }
 
 /*************************************************************
- * Settings page
+ * Profiles settings page
  *************************************************************/
 
-function pageAppSettings() {
-    $.get("partial/app-settings.html", function (data) {
-        updateAppTitle('<strong>Pi</strong>-hole app settings');
+function pageAppProfileForm(profile_id) {
+
+    $.get("partial/app-profile-form.html", function (data) {
+        updateAppTitle('<strong>Pi</strong>-hole app profile');
         $("#main_content").html(data);
         mdl_upgradeDom();
 
@@ -85,15 +91,12 @@ function pageAppSettings() {
             pageAboutHelp();
         });
 
-        if (getPiholeHost()) {
-            $('#pihole_host').val(getPiholeHost());
+        // get app settings
+        if (_localStorage('get', 'settings')) {
+            var settings = JSON.parse(_localStorage('get', 'settings'));
+        } else {
+            var settings = null;
         }
-
-        if (getPiholeToken()) {
-            $('#pihole_token').val(getPiholeToken());
-        }
-
-        updateFloatLabel();
 
         document.addEventListener("deviceready", function () {
             function scanQRCode() {
@@ -123,6 +126,17 @@ function pageAppSettings() {
             $('#qrcode_scan').click(scanQRCode);
         });
 
+        // edit mode
+        if (profile_id !== undefined) {
+            var profile_settings = settings[profile_id];
+
+            $('#profile_name').val(profile_settings['profile_name']);
+            $('#pihole_host').val(profile_settings['pihole_host']);
+            $('#pihole_token').val(profile_settings['pihole_token']);
+
+            updateFloatLabel();
+        }
+
         $('#form_settings').submit(function (event) {
             event.preventDefault();
 
@@ -132,14 +146,17 @@ function pageAppSettings() {
             var pihole_host = $('#pihole_host').val();
             var pihole_token = $('#pihole_token').val();
 
+            // default profile name: pihole's ip
+            if ($('#profile_name').val()) {
+                var profile_name = $('#profile_name').val();
+            } else {
+                var profile_name = pihole_host;
+            }
+
             // check if pihole_host contains http or https, otherwise add http as default
             if (pihole_host.indexOf("http://") == 0 || pihole_host.indexOf("https://") == 0) {
 
             }
-
-            _localStorage('save', 'pihole_host', pihole_host);
-            _localStorage('save', 'pihole_token', pihole_token);
-            _localStorage('remove', 'pihole_success');
 
             $.ajax({
                 type: "POST",
@@ -149,9 +166,48 @@ function pageAppSettings() {
                         if (jQuery.isEmptyObject(response)) {
                             showErrorSettings();
                         } else {
-                            userIsLoggedIn();
-                            pageDashboard();
-                            _localStorage('save', 'pihole_success', 1);
+                            var first_run = false;
+
+                            // first app configuration
+                            if (settings === null) {
+                                var first_run = true;
+                                var saved_settings = new Object();
+                                saved_settings[1] = {'profile_name': profile_name, 'pihole_host': pihole_host, 'pihole_token': pihole_token};
+                            } else {
+
+                                // edit mode
+                                if (profile_id !== undefined) {
+                                    settings[profile_id]['profile_name'] = profile_name;
+                                    settings[profile_id]['pihole_host'] = pihole_host;
+                                    settings[profile_id]['pihole_token'] = pihole_token;
+                                } else {
+                                    // create mode
+                                    var new_profile_id = 0;
+                                    for (var key in settings) {
+                                        if (settings.hasOwnProperty(key)) {
+                                            if (key >= new_profile_id) {
+                                                new_profile_id = parseInt(key) + 1;
+                                            }
+                                        }
+                                    }
+
+                                    settings[new_profile_id] = {'profile_name': profile_name, 'pihole_host': pihole_host, 'pihole_token': pihole_token};
+                                }
+
+                                var saved_settings = settings;
+                            }
+
+                            _localStorage('save', 'settings', JSON.stringify(saved_settings));
+
+                            if (first_run) {
+                                userIsLoggedIn();
+                                _localStorage('save', 'active_profile', 1);
+                                _localStorage('save', 'pihole_success', 1);
+                                $('.current_profile_name').html(getCurrentProfileName());
+                                pageDashboard();
+                            } else {
+                                pageAppProfilesSettings();
+                            }
                         }
                     });
                 },
@@ -159,10 +215,61 @@ function pageAppSettings() {
                     showErrorSettings();
                 }
             });
+        });
+    });
+}
 
+function pageAppProfilesSettings() {
+    $.get("partial/app-settings.html", function (data) {
+        updateAppTitle('<strong>Pi</strong>-hole app settings');
+        $("#main_content").html(data);
+        mdl_upgradeDom();
+
+        // current settings
+        var settings = JSON.parse(_localStorage('get', 'settings'));
+
+        // bind edit profile
+        $(document).on('click', 'a.profile_edit', function (evt) {
+            evt.preventDefault();
+            var profile_to_edit = $(this).parents('div.mdl-list__item').attr('data-profile-id');
+
+            if (profile_to_edit) {
+                pageAppProfileForm(profile_to_edit);
+            }
         });
 
+        // bind add profile
+        $('#add_new_profile').click(function (evt) {
+            evt.preventDefault();
+            pageAppProfileForm();
+        });
+
+        // profile list
+        // TODO: find a better way to inner html
+        for (var key in settings) {
+            if (settings.hasOwnProperty(key)) {
+                // default profile cannot be deleted
+                if (key != 1) {
+                    $('#profiles_table').append('<div class="mdl-list__item" data-profile-id="' + key + '"><span class="mdl-list__item-primary-content"><span>' + settings[key]['profile_name'] + '</span></span><a class="mdl-list__item-secondary-action profile_edit" href="#"><i class="material-icons">mode_edit</i></a><a class="mdl-list__item-secondary-action profile_delete" onclick="pageAppProfileDelete(' + key + ')"><i class="material-icons">delete</i></a></div>');
+                } else {
+                    $('#profiles_table').append('<div class="mdl-list__item" data-profile-id="' + key + '"><span class="mdl-list__item-primary-content"><span>' + settings[key]['profile_name'] + '</span></span><a class="mdl-list__item-secondary-action profile_edit" href="#"><i class="material-icons">mode_edit</i></a></div>');
+                }
+            }
+        }
     });
+}
+
+function pageAppProfileDelete(profile_to_delete) {
+    var settings = JSON.parse(_localStorage('get', 'settings'));
+    if (profile_to_delete && settings) {
+        if (settings[profile_to_delete]) {
+            if (confirm("Are you sure ?") == true) {
+                delete settings[profile_to_delete];
+                _localStorage('save', 'settings', JSON.stringify(settings));
+                pageAppProfilesSettings();
+            }
+        }
+    }
 }
 
 /*
