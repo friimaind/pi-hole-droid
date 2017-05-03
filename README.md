@@ -4,6 +4,8 @@
 
 Pi-hole Droid is an *unofficial* client that connects to your [Pi-hole](https://github.com/pi-hole/pi-hole) to show charts and statistics.
 
+It requires the new *Pi-hole 3.0 FTL* (released on 2 May 2017). Please update your Pi-hole!
+
 This is the repository of the Pi-hole Droid's opensource application available on [Google Play Store](https://play.google.com/store/apps/details?id=friimaind.piholedroid).
 
 **What is Pi-hole?**
