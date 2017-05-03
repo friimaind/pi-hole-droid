@@ -206,10 +206,7 @@ function pageDashboard() {
 
         /* query types */
         $.getJSON(pihole_host + "/admin/api.php?getQueryTypes&auth=" + pihole_token, function (response_data) {
-            
-            console.log(response_data);
-            console.log(response_data.querytypes["A (IPv4)"]);
-            
+
             var data = {
                 labels: ['A (IPv4)', 'AAAA (IPv6)'],
                 series: [{
@@ -234,15 +231,23 @@ function pageDashboard() {
 
 
         /* forward destinations */
-        // TODO: add loading to tbody
         $.getJSON(pihole_host + "/admin/api.php?getForwardDestinations&auth=" + pihole_token, function (response_data) {
-
+            //{"forward_destinations":{"8.8.4.4":2823,"google-public-dns-a.google.com|8.8.8.8":2329,"local|::1":528}}
             var labels_array = [];
             var series_array = [];
             var colors_array = ["ct-fill-red", "ct-fill-blue", "ct-fill-light-blue", "ct-fill-orange", "ct-fill-green"];
 
-            $.each(response_data, function (key, val) {
-                labels_array.push(key);
+            console.log(response_data);
+
+            $.each(response_data.forward_destinations, function (key, val) {
+
+                // split key for labels
+                var label_array = key.split('|');
+                if (label_array[1]) {
+                    labels_array.push(label_array[1]);
+                } else {
+                    labels_array.push(label_array[0]);
+                }
 
                 serie_value = {value: val, className: colors_array[Math.floor(Math.random() * colors_array.length)]};
                 series_array.push(serie_value);
