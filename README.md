@@ -25,6 +25,9 @@ Pi-hole Droid makes use of [Pi-hole API](https://github.com/pi-hole/AdminLTE) to
 ![Charts](screenshots/charts.png?raw=true "Charts")
 ![Settings](screenshots/settings.png?raw=true "Settings")
 
+![Toggle On](screenshots/toggle_on.png?raw=true "Toggle On")
+![Toggle Off](screenshots/toggle_off.png?raw=true "Toggle Off")
+
 ![Home Landscape](screenshots/home-landscape.png?raw=true "Home Landscape")
 
 ![Landscape](screenshots/landscape.png?raw=true "Landscape")
