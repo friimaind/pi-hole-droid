@@ -133,6 +133,7 @@ function pageAppSettings() {
             var pihole_token = $('#pihole_token').val();
 
             // check if pihole_host contains http or https, otherwise add http as default
+            // TODO: complete the check
             if (pihole_host.indexOf("http://") == 0 || pihole_host.indexOf("https://") == 0) {
 
             }
