@@ -232,7 +232,6 @@ function pageDashboard() {
 
         /* forward destinations */
         $.getJSON(pihole_host + "/admin/api.php?getForwardDestinations&auth=" + pihole_token, function (response_data) {
-            //{"forward_destinations":{"8.8.4.4":2823,"google-public-dns-a.google.com|8.8.8.8":2329,"local|::1":528}}
             var labels_array = [];
             var series_array = [];
             var colors_array = ["ct-fill-red", "ct-fill-blue", "ct-fill-light-blue", "ct-fill-orange", "ct-fill-green"];
