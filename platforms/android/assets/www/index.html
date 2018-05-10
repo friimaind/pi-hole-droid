@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pi-hole App</title>
+        <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+        <!-- styles -->
+        <link rel="stylesheet" href="lib/mdl/css/fonts.min.css">
+        <link rel="stylesheet" href="lib/mdl/css/material.icons.min.css">
+        <link rel="stylesheet" href="lib/mdl/css/material.indigo-red.min.css">
+        <link rel="stylesheet" href="lib/chartist/chartist.min.css">        
+        <link rel="stylesheet" href="lib/DataTables/datatables.min.css"/>
+        <link rel="stylesheet" href="css/styles.css">
+        <link rel="stylesheet" href="css/responsive.css">
+        <!-- /styles -->
+    </head>
+    <body>
+        <div class="pihole-layout mdl-layout mdl-js-layout mdl-layout--fixed-drawer mdl-layout--fixed-header">
+            <header class="pihole-header mdl-layout__header">
+                <div class="mdl-layout__header-row">
+                    <span class="mdl-layout-title"></span>
+                    <div class="mdl-layout-spacer"></div>
+
+                    <!-- Pi-hole toggle -->
+                    <div id="container-pihole-toggle" style="display:none">
+                        <label id="label-pihole-toggle" class="mdl-switch mdl-js-switch mdl-js-ripple-effect" for="switch-pihole-toggle">
+                            <input type="checkbox" id="switch-pihole-toggle" class="mdl-switch__input" checked>
+                            <span class="mdl-switch__label"></span>
+                        </label>
+                    </div>
+                </div>
+            </header>
+
+            <!-- drawer -->
+            <div class="pihole-drawer mdl-layout__drawer">
+                <header id="header_loggedin" style="display:none" class="pihole-drawer-header mdl-color--primary-dark mdl-color-text--blue-grey-50">
+                    <div class="pihole-avatar-dropdown">
+                        <img class="pihole_logo" src="img/logo.svg">
+                        <span>You are logged in</span>
+                        <div class="mdl-layout-spacer"></div>
+                        <button id="accbtn" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+                            <i class="material-icons" role="presentation">arrow_drop_down</i>
+                            <span class="visuallyhidden">Accounts</span>
+                        </button>
+                        <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="accbtn">
+                            <li class="mdl-menu__item" id="logout"><i class="material-icons">exit_to_app</i>Logout</li>
+                        </ul>
+                    </div>
+                </header>
+                <header id="header_guest" class="pihole-drawer-header mdl-color--primary-dark mdl-color-text--blue-grey-50">
+                    <div class="pihole-avatar-dropdown">
+                        <img class="pihole_logo" src="img/logo.svg">
+                        <span>You are not logged in</span>
+                        <div class="mdl-layout-spacer"></div>                        
+                    </div>
+                </header>
+                <nav id="drawer" class="pihole-navigation mdl-navigation mdl-color--white">
+                    <a class="mdl-navigation__link" href="dashboard"><i class="material-icons" role="presentation">dashboard</i>Dashboard</a>
+                    <a class="mdl-navigation__link" href="query_log"><i class="material-icons" role="presentation">filter_list</i>Query log</a>
+                    <a class="mdl-navigation__link" href="app_settings"><i class="material-icons" role="presentation">settings</i>App settings</a>
+                    <a class="mdl-navigation__link" href="about_help"><i class="material-icons" role="presentation">help_outline</i>About & Help</a>
+                </nav>
+            </div>
+            <!-- /drawer -->
+
+            <main id="main_content" class="mdl-layout__content mdl-color--grey-100">
+                <!-- the ajax area -->
+            </main>
+        </div>
+
+        <!-- scripts -->
+        <script type="text/javascript" src="cordova.js"></script>   
+        <script type="text/javascript" src="lib/jQuery/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript" src="lib/mdl/js/material.min.js"></script>        
+        <script type="text/javascript" src="lib/chartist/chartist.min.js"></script>
+        <script type="text/javascript" src="lib/DataTables/datatables.min.js"></script>
+        <script type="text/javascript" src="lib/hammerjs/hammer.min.js"></script>
+        <script type="text/javascript" src="lib/hammerjs/hammer-time.min.js"></script>
+        <script type="text/javascript" src="js/utilities.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>        
+        <!-- /scripts -->
+    </body>
+</html>

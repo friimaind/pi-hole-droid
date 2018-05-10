@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="friimaind.piholedroid" version="1.0.4" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Whitelist">
+        <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
+    <name>Pi-hole Droid</name>
+    <description>
+        Monitor your Pi-hole with your Android smartphone
+    </description>
+    <author email="massimiliano.monaro@gmail.com" href="https://blog.friimaind.it">
+        Massimiliano Monaro
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <icon density="ldpi" src="www/assets/mipmap-ldpi/ic_launcher.png" />
+    <icon density="mdpi" src="www/assets/mipmap-mdpi/ic_launcher.png" />
+    <icon density="hdpi" src="www/assets/mipmap-hdpi/ic_launcher.png" />
+    <icon density="xhdpi" src="www/assets/mipmap-xhdpi/ic_launcher.png" />
+    <allow-intent href="market:*" />
+    <preference name="loglevel" value="DEBUG" />
+    <preference name="Fullscreen" value="false" />
+    <preference name="SplashScreenDelay" value="2000" />
+    <preference name="SplashScreen" value="screen" />
+    <preference name="SplashMaintainAspectRatio" value="true" />
+    <preference name="ShowSplashScreenSpinner" value="false" />
+</widget>
