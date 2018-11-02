@@ -18,7 +18,7 @@ Pi-hole Droid makes use of [Pi-hole API](https://github.com/pi-hole/AdminLTE) to
 
 <a href="#/"><img src="https://play.google.com/intl/en_us/badges/images/generic/en_badge_web_generic.png" height="60"></a>
 
-*Please note:* Google Play Store is temporary unavailable, in the meantime you can **get the latest APK** directly from here https://github.com/friimaind/pi-hole-droid/releases/latest
+*Please note:* Google Play Store is temporary unavailable, in the meantime you can **get the latest APK** directly from [here](https://github.com/friimaind/pi-hole-droid/releases/latest) or [IzzyOnDroid F-Droid repository](https://android.izzysoft.de/repo/apk/friimaind.piholedroid)
 
 ## Screenshots
 ![Homepage](screenshots/home.png?raw=true "Homepage") 
