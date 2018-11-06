@@ -1,0 +1,313 @@
+/* GENERAL */
+html, body {
+    font-family: 'Roboto', 'Helvetica', sans-serif;
+}
+
+.centered-element {
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+#main_content {
+    padding: 25px 0;
+}
+
+.fullwidth {
+    width: 100%;
+}
+
+.mdl-data-table tbody tr:hover {
+    background-color: transparent; 
+}
+/* /GENERAL */
+
+/* DRAWER */
+.pihole-drawer {
+    border: none;
+}
+
+.pihole-drawer .mdl-menu .mdl-menu__item {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
+
+.pihole-drawer-header {
+    box-sizing: border-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    padding: 16px;
+}
+
+.pihole-avatar-dropdown {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    position: relative;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+}
+
+.pihole-navigation {
+    -webkit-flex-grow: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+.pihole-layout .pihole-navigation .mdl-navigation__link {
+    display: -webkit-flex !important;
+    display: -ms-flexbox !important;
+    display: flex !important;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: 500;
+}
+
+.pihole-navigation .mdl-navigation__link .material-icons {
+    margin-right: 32px;
+}
+
+.pihole-drawer .pihole_logo {
+    width: 48px;
+    height: 48px;
+    padding-right: 10px;
+}
+/* /DRAWER */
+
+/* HEADER */
+
+.pihole-header #container-pihole-toggle {
+    padding-right: 10px;
+}
+
+.pihole-header .mdl-switch__thumb {
+    background:#dd4b39;
+}
+
+.pihole-header .mdl-switch.is-checked .mdl-switch__thumb {
+    background: #00a65a;
+}
+
+.pihole-header .mdl-switch.is-checked .mdl-switch__track {
+    background: rgba(0,0,0,.26);
+}
+
+/* /HEADER */
+
+/* CHARTS */
+.pihole-card .ct-chart {
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+}
+
+.ct-chart .ct-slice-pie {
+    stroke: white;
+    stroke-width: 2px;
+}
+
+.ct-label {
+    font-size: 15px;
+    fill:#333;
+}
+
+.ct-fill-red {
+    fill:#f56954;
+}
+
+.ct-fill-blue{
+    fill:#3c8dbc;
+}
+
+.ct-fill-light-blue{
+    fill:#00c0ef;
+}
+
+.ct-fill-green{
+    fill:#00a65a;
+}
+
+.ct-fill-orange{
+    fill:#f39c12;
+}
+
+/* /CHARTS */
+
+/* MDL CARD */
+.pihole-card h2 {
+    margin:0;
+}
+
+.material-icons.loading {
+    -webkit-animation:fa-spin 2s infinite linear;
+    animation:fa-spin 2s infinite linear;
+}
+
+@-webkit-keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+@keyframes fa-spin {
+    0% {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(359deg);
+        transform: rotate(359deg);
+    }
+}
+
+.pihole-card.bg-aqua {     
+    background: #00c0ef;   
+}
+
+.pihole-card.bg-green {     
+    background: #00a65a;   
+}
+
+.pihole-card.bg-yellow {     
+    background: #f39c12;   
+}
+
+.pihole-card.bg-red {     
+    background: #dd4b39;   
+}
+
+.pihole-card.bg-white {
+    background: #fff;        
+}    
+
+.pihole-card.mdl-card {
+    width: 95%;
+    height: auto;
+    margin: 15px auto;
+    min-height: initial;
+}
+
+.pihole-card.mdl-card:first-child{
+    margin-top:0;
+}
+
+.pihole-card > .mdl-card__actions {
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.pihole-card > .mdl-card__title {
+    align-items: flex-start;
+}
+
+.pihole-card > .mdl-card__title > h4 {
+    margin-top: 0;
+}
+
+.pihole-card > .mdl-card__actions {
+    display: flex;
+    box-sizing:border-box;
+    align-items: center;
+}
+
+.pihole-card > .mdl-card__actions > .material-icons {
+    padding-right: 10px;
+}
+
+.pihole-card:not(.bg-white) > .mdl-card__title,
+.pihole-card:not(.bg-white) > .mdl-card__actions,
+.pihole-card:not(.bg-white) > .mdl-card__actions > .mdl-button {
+    color: #fff;
+}
+/* /MDL CARD */
+
+/* DATATABLES */
+.dataTables_length,
+.dataTables_filter {
+    margin: 0 15px 15px 15px;
+}
+
+table.dataTable thead th,
+table.dataTable thead td,
+table.dataTable.no-footer{
+    border-bottom: inherit;
+}
+
+@media screen and (max-width: 640px) {
+    .dataTables_wrapper .dataTables_filter {
+        margin-top:0;
+    }
+
+    .dataTables_wrapper .dataTables_length{
+        float:left;
+    }
+
+    .dataTables_wrapper .dataTables_filter {
+        float:right;
+    }
+}
+/* /DATATABLES */
+
+/* SETTINGS */
+.mdl-cell.mdl-card:first-child{
+    margin-top:0;
+}
+
+#form_settings{
+    margin:30px 0 15px 0;
+}
+
+#form_settings .mdl-button {
+    margin: 15px 0 0 0;
+}
+
+.mdl-textfield {
+    width: 100%;
+}
+
+#pihole_token {
+    width:85%;
+    display:inline-block;
+}
+
+#qrcode_scan {
+    float:right;
+    padding-top:5px;
+    opacity:.6;
+}
+/* /SETTINGS */
+
+/* ABOUT&HELP */
+h5 i.material-icons {
+    vertical-align: -4px;
+}
+/* /ABOUT&HELP */
+
+/* QUERYLOG */
+.mdl-chip.mdl-please-wait .material-icons {
+    vertical-align: -6px;
+}
+/* /QUERYLOG */

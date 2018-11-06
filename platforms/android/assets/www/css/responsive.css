@@ -1,0 +1,39 @@
+/* TABLES */
+@media all and (max-width:500px) {
+    .force-landscape {
+        display: none;
+    }
+}
+@media all and (min-width:500px){
+    .please-rotate {
+        display: none;
+    }
+}
+/* /TABLES */
+
+/* MDL CARD */
+@media all and (min-width:590px) {
+    .pihole-card.pihole-card-floating > .mdl-card__actions > .material-icons{
+        padding-right: 0;
+    }
+
+    .pihole-card.pihole-card-floating > .mdl-card__actions {
+        font-size: 15px;
+    }
+
+    .pihole-card.pihole-card-floating.mdl-card{
+        display: inline-block;
+        width: 46%;
+        margin: 15px 2% 0 0;
+    }
+
+    .pihole-card.pihole-card-floating.mdl-card:nth-child(1),
+    .pihole-card.pihole-card-floating.mdl-card:nth-child(2){
+        margin-top: 0;
+    }
+
+    .pihole-card.pihole-card-floating.mdl-card:nth-of-type(even){
+        margin-right: 0;
+    }
+}
+/* /MDL CARD */
